@@ -17,7 +17,7 @@ public class BoardController{
 //    BoardVO boardVO;
 
     @RequestMapping(value = "/")
-    public  String home(){return "list";}
+    public  String home(){return "home";}
 
     @RequestMapping(value = "board/list", method = RequestMethod.GET)
     public String boardlist(Model model){

@@ -6,7 +6,7 @@
   Time: 18:03
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>Title</title>
@@ -25,11 +25,15 @@
 </h1>
 <table id="list" width="90%">
     <tr>
+        <th>Seq</th>
         <th>ID</th>
-        <th>Category</th>
-        <th>Title</th>
-        <th>Writer</th>
-        <th>Content</th>
+        <th>Password</th>
+        <th>Nickname</th>
+        <th>Age</th>
+        <th>Phone-Number</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Gender</th>
         <th>Regdate</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -38,10 +42,14 @@
     <c:forEach items="${list}" var="u">
         <tr>
             <td>${u.seq}</td>
-            <td>${u.category}</td>
-            <td>${u.title}</td>
-            <td>${u.writer}</td>
-            <td>${u.content}</td>
+            <td>${u.id}</td>
+            <td>${u.password}</td>
+            <td>${u.nickname}</td>
+            <td>${u.age}</td>
+            <td>${u.phoneNum}</td>
+            <td>${u.email}</td>
+            <td>${u.address}</td>
+            <td>${u.gender}</td>
             <td>${u.regdate}</td>
             <td><a href="editform/${u.seq}">글수정</a></td>
             <td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>

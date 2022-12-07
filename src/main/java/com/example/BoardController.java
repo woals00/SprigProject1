@@ -15,7 +15,7 @@ public class BoardController{
     BoardService boardService;
 
     @RequestMapping(value = "/")
-    public  String home(){return "home";}
+    public  String home(){return "login";}
 
     @RequestMapping(value = "board/list", method = RequestMethod.GET)
     public String boardlist(Model model){

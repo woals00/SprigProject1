@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping(value = "/")
+//@RequestMapping(value = "/login")
 public class LoginController {
     @Autowired
     UserServiceImpl service;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String login() {
         return "login";
     }
@@ -24,7 +24,6 @@ public class LoginController {
         if(session.getAttribute("login") != null){
             session.removeAttribute("login");
         }
-
         UserVO loginvo = service.getUser(vo);
         if(loginvo != null){
             System.out.println("로그인 성공!");
@@ -33,7 +32,8 @@ public class LoginController {
         }
         else{
             System.out.println("로그인 실패!");
-            returnURL = "redirect:/login/login";
+            System.out.println(loginvo);
+            returnURL = "redirect:/";
         }
         return returnURL;
     }

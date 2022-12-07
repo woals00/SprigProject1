@@ -10,18 +10,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class BoardController{
-    @Autowired
-    BoardDAO boardDAO;
 
-//    @Autowired
-//    BoardVO boardVO;
+    @Autowired
+    BoardService boardService;
 
     @RequestMapping(value = "/")
     public  String home(){return "home";}
 
     @RequestMapping(value = "board/list", method = RequestMethod.GET)
     public String boardlist(Model model){
-        model.addAttribute("list", boardDAO.getBoardList());
+        model.addAttribute("list", boardService.getBoardList());
         return "board/list";
     }
 
@@ -32,7 +30,7 @@ public class BoardController{
 
     @RequestMapping(value = "/board/addok", method = RequestMethod.POST)
     public String addPostOK(BoardVO vo){
-        int i = boardDAO.insertBoard(vo);
+        int i = boardService.insertBoard(vo);
         if(i == 0){
             System.out.println("데이터 추가 실패 ");
         }
@@ -43,14 +41,14 @@ public class BoardController{
     }
     @RequestMapping(value = "/board/editform/{id}", method = RequestMethod.GET)
     public String editPost(@PathVariable("id") int id, Model model){
-        BoardVO boardVO = boardDAO.getBoard(id);
+        BoardVO boardVO = boardService.getBoard(id);
         model.addAttribute("u", boardVO);
         return "board/editform";
     }
 
     @RequestMapping(value ="/board/editok", method = RequestMethod.POST)
     public String editPostOK(BoardVO vo){
-        int i = boardDAO.updateBoard(vo);
+        int i = boardService.updateBoard(vo);
         if(i == 0)
             System.out.println("데이터 수정 실패");
         else
@@ -60,7 +58,7 @@ public class BoardController{
 
     @RequestMapping(value ="/board/deleteok/{id}", method = RequestMethod.GET)
     public String deletePost(@PathVariable("id") int id){
-        int i = boardDAO.deleteBoard(id);
+        int i = boardService.deleteBoard(id);
         if(i==0)
             System.out.println("데이터 삭제 실패");
         else

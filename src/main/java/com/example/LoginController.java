@@ -6,16 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 
 @Controller
-//@RequestMapping(value = "/login")
+@RequestMapping(value = "/")
 public class LoginController {
     @Autowired
     UserServiceImpl service;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        return "login";
+        return "login/login";
     }
 
     @RequestMapping(value = "/loginOk", method = RequestMethod.POST)
@@ -32,7 +33,6 @@ public class LoginController {
         }
         else{
             System.out.println("로그인 실패!");
-            System.out.println(loginvo);
             returnURL = "redirect:/";
         }
         return returnURL;
@@ -41,6 +41,6 @@ public class LoginController {
     @RequestMapping(value = "/logout")
     public String logout(HttpSession session){
         session.invalidate();
-        return "redirect:/login/login";
+        return "redirect:/login";
     }
 }

@@ -23,7 +23,7 @@
 <h1>
     회원 관리 시스템
 </h1>
-<a href="login">logout</a>
+<a href="../logout">logout</a>
 <table id="list" width="90%">
     <tr>
         <th>Seq</th>

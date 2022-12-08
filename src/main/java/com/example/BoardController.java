@@ -14,8 +14,8 @@ public class BoardController{
     @Autowired
     BoardService boardService;
 
-//    @RequestMapping(value = "/")
-//    public  String home(){return "login";}
+    @RequestMapping(value = "/")
+    public  String home(){return "login/login";}
 
     @RequestMapping(value = "board/list", method = RequestMethod.GET)
     public String boardlist(Model model){
